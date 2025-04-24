@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Formulario que centraliza toda lo logica y crea botones
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

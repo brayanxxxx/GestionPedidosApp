@@ -1,4 +1,6 @@
-﻿using System;
+﻿//metodo entrega bicicleta
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

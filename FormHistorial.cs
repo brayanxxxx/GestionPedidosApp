@@ -1,4 +1,5 @@
-﻿using System;
+﻿//formulario de historial de pedidos con filtros
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

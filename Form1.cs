@@ -1,4 +1,4 @@
-﻿//Formulario que centraliza toda lo logica y crea botones
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +27,7 @@ namespace PedidosApp
         private System.Windows.Forms.Label lblResultado;
         private System.Windows.Forms.ListBox lstPedidos;
         private System.Windows.Forms.Label lblHistorial;
+        private System.Windows.Forms.Button btnVerHistorial; 
 
         public Form1()
         {
@@ -40,7 +41,7 @@ namespace PedidosApp
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.Size = new Size(320, 500);
+            this.Size = new Size(320, 550); 
 
             lblCliente = new Label();
             txtCliente = new TextBox();
@@ -55,6 +56,7 @@ namespace PedidosApp
             lblResultado = new Label();
             lstPedidos = new ListBox();
             lblHistorial = new Label();
+            btnVerHistorial = new Button(); 
 
             lblCliente.AutoSize = true;
             lblCliente.Location = new Point(12, 15);
@@ -118,6 +120,11 @@ namespace PedidosApp
             lstPedidos.Location = new Point(15, 320);
             lstPedidos.Size = new Size(268, 121);
 
+            btnVerHistorial.Location = new Point(83, 450);
+            btnVerHistorial.Size = new Size(200, 23);
+            btnVerHistorial.Text = "Ver Historial Completo";
+            btnVerHistorial.Click += new EventHandler(btnVerHistorial_Click);
+
             this.Controls.Add(lblCliente);
             this.Controls.Add(txtCliente);
             this.Controls.Add(lblProducto);
@@ -131,6 +138,7 @@ namespace PedidosApp
             this.Controls.Add(lblResultado);
             this.Controls.Add(lblHistorial);
             this.Controls.Add(lstPedidos);
+            this.Controls.Add(btnVerHistorial); 
 
             ((System.ComponentModel.ISupportInitialize)nudPeso).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudDistancia).EndInit();
@@ -176,7 +184,18 @@ namespace PedidosApp
                 lstPedidos.Items.Add($"{pedido.Cliente} - {pedido.Producto} - {pedido.MetodoEntrega.TipoEntrega()} - ${pedido.ObtenerCosto():0.00}");
             }
         }
-    }
 
-  
+        private void btnVerHistorial_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormHistorial formHistorial = new FormHistorial();
+                formHistorial.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el historial: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
 }
